@@ -2,6 +2,8 @@
 
 Registro de avance real, fase por fase. Espejo del roadmap interactivo (bitácora en Claude), pero acá queda commiteado junto con el código.
 
+Conceptos aprendidos en el camino (con dónde aparecen en el código): [`GLOSARIO.md`](./GLOSARIO.md)
+
 ## Fase 0 — Diagnóstico y setup
 - [x] Mapear el aviso de MELI contra la experiencia actual
 - [x] Python 3.12 instalado (ya venía en el sistema)
