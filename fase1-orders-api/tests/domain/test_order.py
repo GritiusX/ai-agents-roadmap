@@ -2,8 +2,8 @@ import pytest
 
 from src.domain.product import Product
 from src.domain.order import Order
-from src.domain.exceptions import InsufficientStockError
-from src.domain.exceptions import InvalidQuantityError
+from src.domain.enum import OrderStatus
+from src.domain.exceptions import InsufficientStockError, OrderAlreadyShippedError, InvalidQuantityError
 
 
 
@@ -27,3 +27,21 @@ def test_crear_un_pedido_con_stock_insuficiente_del_producto():
 
     with pytest.raises(InvalidQuantityError):
         Order.create(product=product,quantity=-1)
+
+def test_no_se_puede_cancelar_un_pedido_que_ya_fue_enviado():
+    product = Product(id=1, name="Mouse", stock=8)
+
+    order = Order.create(product=product,quantity=2)
+
+    order.ship()
+
+    with pytest.raises(OrderAlreadyShippedError):
+        order.cancel()
+
+def test_se_cancela_un_pedido_si_esta_pendiente_de_envio():
+    product = Product(id=1, name="Mouse", stock=8) 
+    order = Order.create(product=product,quantity=2)
+
+    order.cancel()
+
+    assert order.status == OrderStatus.CANCELLED

@@ -3,3 +3,6 @@ class InsufficientStockError(Exception):
 
 class InvalidQuantityError(Exception):
     """Se lanza cuando se pide una cantidad inválida (negativa o cero)."""
+
+class OrderAlreadyShippedError(Exception):
+    """Se lanza cuando se intenta cancelar un pedido que ya fue enviado."""
