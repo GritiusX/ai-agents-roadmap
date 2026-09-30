@@ -66,7 +66,7 @@ Registro de por qué se tomó cada decisión, no solo qué se hizo. Se va comple
 - **Estado:** hecho (rojo → verde).
 
 ### ORDERS-2 — Rechazar pedidos con cantidad inválida (0 o negativa)
-- **Test:** `tests/domain/test_order.py::test_crear_un_pedido_con_stock_insuficiente_del_producto`
+- **Test:** `tests/domain/test_order.py::test_crear_un_pedido_con_cantidad_invalida_del_producto`
 - **Regla:** si `quantity <= 0`, se lanza `InvalidQuantityError` (antes de chequear stock).
 - **Estado:** hecho.
 

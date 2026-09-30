@@ -22,7 +22,7 @@ def test_crear_un_pedido_descuenta_el_stock_del_producto():
     assert product.stock == 3
     assert order.quantity == 2
 
-def test_crear_un_pedido_con_stock_insuficiente_del_producto():
+def test_crear_un_pedido_con_cantidad_invalida_del_producto():
     product = Product(id=1, name="Mouse", stock=8)
 
     with pytest.raises(InvalidQuantityError):
