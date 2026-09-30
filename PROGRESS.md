@@ -17,7 +17,8 @@ Proyecto: [`fase1-orders-api/`](./fase1-orders-api) — API de gestión de pedid
 - [x] **ORDERS-1**: no se puede crear un pedido sin stock suficiente (TDD, rojo→verde)
 - [x] **ORDERS-2**: rechazar pedidos con cantidad inválida (0 o negativa)
 - [x] **ORDERS-3**: no se puede cancelar un pedido ya enviado (estado con `Enum`, métodos de instancia)
-- [ ] **ORDERS-4**: no se puede enviar un pedido cancelado — en curso
+- [x] **ORDERS-4**: no se puede enviar un pedido cancelado (+ test del camino feliz de `ship()`)
+- [x] **ORDERS-5**: no se puede reenviar un pedido ya enviado (excepción en vez de idempotencia)
 - [ ] Exponer todo vía API REST con FastAPI + OpenAPI
 - [ ] Migraciones con Alembic + Postgres
 
