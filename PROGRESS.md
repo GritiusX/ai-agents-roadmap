@@ -22,6 +22,10 @@ Proyecto: [`fase1-orders-api/`](./fase1-orders-api) — API de gestión de pedid
 - [x] **ORDERS-4**: no se puede enviar un pedido cancelado (+ test del camino feliz de `ship()`)
 - [x] **ORDERS-5**: no se puede reenviar un pedido ya enviado (excepción en vez de idempotencia)
 - [ ] Exponer todo vía API REST con FastAPI + OpenAPI
+  - [ ] **ORDERS-6**: repositorio en memoria + caso de uso para crear pedidos
+  - [ ] **ORDERS-7**: `POST /orders` y `GET /orders/{id}`
+  - [ ] **ORDERS-8**: excepciones de dominio → códigos HTTP
+  - [ ] **ORDERS-9**: endpoints para enviar y cancelar pedidos
 - [ ] Migraciones con Alembic + Postgres
 
 Detalle de decisiones técnicas de este proyecto: [`fase1-orders-api/docs/decisions.md`](./fase1-orders-api/docs/decisions.md)
