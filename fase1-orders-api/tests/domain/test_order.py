@@ -3,7 +3,7 @@ import pytest
 from src.domain.product import Product
 from src.domain.order import Order
 from src.domain.enum import OrderStatus
-from src.domain.exceptions import InsufficientStockError, OrderAlreadyShippedError, InvalidQuantityError, OrderCancelledCannotBeShippedError
+from src.domain.exceptions import InsufficientStockError, OrderAlreadyShippedError, InvalidQuantityError, OrderCancelledCannotBeShippedError, OrderShippedCannotBeShippedAgainError
 
 
 
@@ -62,5 +62,16 @@ def test_se_envia_un_pedido_si_esta_pendiente():
     order = Order.create(product,2)
 
     order.ship()
+
+    assert order.status == OrderStatus.SHIPPED
+
+def test_no_se_reenvia_un_pedido_ya_enviado():
+    product = Product(id=1,name="Teclado",stock=11)
+    order = Order.create(product,2)
+
+    order.ship()
+
+    with pytest.raises(OrderShippedCannotBeShippedAgainError):
+        order.ship()
 
     assert order.status == OrderStatus.SHIPPED

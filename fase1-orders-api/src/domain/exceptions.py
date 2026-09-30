@@ -9,3 +9,6 @@ class OrderAlreadyShippedError(Exception):
 
 class OrderCancelledCannotBeShippedError(Exception):
     """Se lanza cuando se intenta enviar una orden ya cancelada"""
+
+class OrderShippedCannotBeShippedAgainError(Exception):
+    """Se lanza cuando se intenta enviar una orden ya enviada"""
