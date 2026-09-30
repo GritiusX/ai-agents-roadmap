@@ -6,3 +6,6 @@ class InvalidQuantityError(Exception):
 
 class OrderAlreadyShippedError(Exception):
     """Se lanza cuando se intenta cancelar un pedido que ya fue enviado."""
+
+class OrderCancelledCannotBeShippedError(Exception):
+    """Se lanza cuando se intenta enviar una orden ya cancelada"""

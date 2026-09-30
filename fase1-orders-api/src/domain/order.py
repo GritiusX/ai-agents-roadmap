@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from src.domain.exceptions import InsufficientStockError, InvalidQuantityError, OrderAlreadyShippedError
+from src.domain.exceptions import InsufficientStockError, InvalidQuantityError, OrderAlreadyShippedError, OrderCancelledCannotBeShippedError
 from src.domain.product import Product
 from src.domain.enum import OrderStatus
 
@@ -30,11 +30,15 @@ class Order:
         return cls(product_id=product.id, quantity=quantity)
 
     def ship(self):
-        if (self.status == OrderStatus.PENDING):
-            self.status = OrderStatus.SHIPPED
-    
+        if self.status == OrderStatus.CANCELLED:
+            raise OrderCancelledCannotBeShippedError(
+                "No se pueden enviar ordenes ya canceladas"
+            )
+
+        self.status = OrderStatus.SHIPPED
+
     def cancel(self):
-        if(self.status != OrderStatus.SHIPPED):
+        if self.status != OrderStatus.SHIPPED:
             self.status = OrderStatus.CANCELLED
         else:
             raise OrderAlreadyShippedError(
